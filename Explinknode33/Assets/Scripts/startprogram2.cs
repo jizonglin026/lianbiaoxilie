@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class startprogram2 : MonoBehaviour {
                                         //程序文本
@@ -92,154 +93,221 @@ public class startprogram2 : MonoBehaviour {
         flagadress = false;
         flagEnd = false;
         Clickcount = 0;
-
+        
     }
-	
     public void onClickStart()
     {
         Clickcount++;
         startBt.enabled = true;
     }
-
-	void Update () {
-                                        //node *head,*p;
-        if (Clickcount == 1)
+     void Update()
+    {
+       
+        if (Clickcount==1)
         {
-            preBt.enabled = false;
-            T1.color = Color.blue;
-            //TipPanel.SetActive(true);
-            //tipText.text = "声明两个变量*head , *p";
+            {
+                T1.color = Color.blue;
+                TipPanel.SetActive(true);
+                tipText.text = "声明两个变量*head , *p";
+            }
         }
-                                        //p=(node *)malloc(sizeof(node));                        
-        else if (Clickcount == 2)
+        else if (Clickcount==2)
         {
-
             T1.color = Color.black;
             T2.color = Color.blue;
             flagmove = true;
-           // TipPanel.SetActive(true);
-           // tipText.text = "在内存中请求分配一块内存，让p指向这个内存";
-            InputID.enabled = false;
+            TipPanel.SetActive(true);
+            tipText.text = "在内存中请求分配一块内存，让p指向这个内存";
+            //yield return new WaitForSeconds(0.5f);
         }
-                                        //用户输入p->ID;
-        else if (Clickcount == 3) 
+        else if (Clickcount == 3)
         {
-            startBt.enabled = false;
             T2.color = Color.black;
             T3.color = Color.blue;
-            if(IDInputEditref_.flagID==true && memorystartref_.flagAction==true)
-            {
-                IDnum = int.Parse(IDInputEditref_.StrID);
-                flagID = true;
-                startBt.enabled = true;
-            }
+            IDnum = int.Parse("000001");
+            flagID = true;
             TipPanel.SetActive(true);
             tipText.text = "请输入学号后六位，数值存储采用小端存储";
-            InputID.gameObject.SetActive(true);
-            InputID.enabled = true;
-            InputName.enabled = false;
         }
-                                        //用户输入p->name
         else if (Clickcount == 4)
         {
-            startBt.enabled = false;
             T3.color = Color.black;
             T4.color = Color.blue;
-            Namestr = NameInputEditref_.StrName;
-            if(Namestr!="")
-            {
-                startBt.enabled = true;
-                flagName = true;
-            }
+            Namestr = "ert";
+            flagName = true;
             TipPanel.SetActive(true);
-            tipText.text = "请输入学生姓名，除汉字";
-            InputID.enabled = false;
-            InputName.gameObject.SetActive(true);
-            InputName.enabled = true;
+            tipText.text = "结构体变量name为ert";
         }
-                                         //p->link=NULL;
         else if (Clickcount == 5)
         {
-            InputName.enabled = false;
-            //startBt.enabled = false;
             T4.color = Color.black;
             T5.color = Color.blue;
-
-            TipPanel.SetActive(false);
-            pInputAddressTipPanel.SetActive(true);
-            InputAdress1.enabled = true;
-            if(pAddressInputEditref_.StrAddress=="0x00000000")
-            {
-                flagadress = true;
-                ErrorImage1.enabled = false;
-                RightImage1.enabled = true;
-                startBt.enabled = true;
-                InputAdress1.enabled = false;
-            }
-            else if(pAddressInputEditref_.StrAddress.Length>0)
-            {
-                ErrorImage1.enabled = true;
-                RightImage1.enabled = false;
-                InputAdress1.enabled = true;
-            } 
+            flagadress = true;
+            TipPanel.SetActive(true);
+            tipText.text = "结构的link成员指向空";
         }
-                                            //head=p;
         else if (Clickcount == 6)
         {
-          //  startBt.enabled = false;
             T5.color = Color.black;
             T6.color = Color.blue;
-            pInputAddressTipPanel.SetActive(false);
-            headInputAddressPanel.SetActive(true);
-            InputAdress2.enabled = true;
-            if (headAddressInputEditref_.StrAddress== address.text.ToString().ToLower())
-            {
-                ErrorImage2.enabled = false;
-                RightImage2.enabled = true;
-                flagEnd = true;                 //标记，将被赋值之后的空间置为红色
-                flagmove = false;
-                flagID = false;
-                flagName = false;
-                flagadress = false;
-//                nextBt.enabled = true;
-				postbutton.gameObject.SetActive(true);
-                preBt.enabled = true;
-                InputAdress2.enabled = false;
-            }
-            else if (headAddressInputEditref_.StrAddress.Length > 0)
-            {
-                ErrorImage2.enabled = true;
-                RightImage2.enabled = false;
-                InputAdress2.enabled = true;
-            }
+            flagEnd = true;
+            TipPanel.SetActive(true);
+            tipText.text = "此时指针p指向头结点";
         }
-        if (Clickcount >= 6)
-        {
-            //报错
-            startBt.enabled = false;
-        }
+
+
+    }
+
+   
+
+//	void Update () {
+//                                        //node *head,*p;
+//        if (Clickcount == 1)
+//        {
+//            preBt.enabled = false;
+//            T1.color = Color.blue;
+//            TipPanel.SetActive(true);
+//            tipText.text = "声明两个变量*head , *p";
+           
+//        }
+//                                        //p=(node *)malloc(sizeof(node));                        
+//        else if (Clickcount == 2)
+//        {
+
+//            T1.color = Color.black;
+//            T2.color = Color.blue;
+//            flagmove = true;
+//           // TipPanel.SetActive(true);
+//           // tipText.text = "在内存中请求分配一块内存，让p指向这个内存";
+//            InputID.enabled = false;
+//        }
+//                                        //用户输入p->ID;
+//        else if (Clickcount == 3) 
+//        {
+//            //startBt.enabled = false;
+//            T2.color = Color.black;
+//            T3.color = Color.blue;
+           
+//            //if (IDInputEditref_.flagID==true && memorystartref_.flagAction==true)
+//            //{
+//            //    IDnum = int.Parse(IDInputEditref_.StrID);
+//            //    flagID = true;
+//            //    startBt.enabled = true;
+//            //}
+//            //TipPanel.SetActive(true);
+//            //tipText.text = "请输入学号后六位，数值存储采用小端存储";
+//            //InputID.gameObject.SetActive(true);
+//            //InputID.enabled = true;
+//            //InputName.enabled = false;
+//        }
+//                                        //用户输入p->name
+//        else if (Clickcount == 4)
+//        {
+//            //startBt.enabled = false;
+//            T3.color = Color.black;
+//            T4.color = Color.blue;
+//            Namestr = "head";
+//            flagName = true;
+//            Namestr = NameInputEditref_.StrName;
+//            if (Namestr != "")
+//            {
+//                startBt.enabled = true;
+//                flagName = true;
+//            }
+//            TipPanel.SetActive(true);
+//            tipText.text = "请输入学生姓名，除汉字";
+//            InputID.enabled = false;
+//            InputName.gameObject.SetActive(true);
+//            InputName.enabled = true;
+//        }
+//        //p->link=NULL;
+//        else if (Clickcount == 5)
+//        {
+//            //InputName.enabled = false;
+//            //startBt.enabled = false;
+//            T4.color = Color.black;
+//            T5.color = Color.blue;
+            
+
+//            //TipPanel.SetActive(false);
+//            //pInputAddressTipPanel.SetActive(true);
+//            //InputAdress1.enabled = true;
+//            //if(pAddressInputEditref_.StrAddress=="0x00000000")
+//            //{
+//            //    flagadress = true;
+//            //    ErrorImage1.enabled = false;
+//            //    RightImage1.enabled = true;
+//            //    startBt.enabled = true;
+//            //    InputAdress1.enabled = false;
+//            //}
+//            //else if(pAddressInputEditref_.StrAddress.Length>0)
+//            //{
+//            //    ErrorImage1.enabled = true;
+//            //    RightImage1.enabled = false;
+//            //    InputAdress1.enabled = true;
+//            //} 
+//        }
+//                                            //head=p;
+//        else if (Clickcount == 6)
+//        {
+//          //  startBt.enabled = false;
+//            T5.color = Color.black;
+//            T6.color = Color.blue;
+           
+
+
+
+//            //            pInputAddressTipPanel.SetActive(false);
+//            //            headInputAddressPanel.SetActive(true);
+//            //            InputAdress2.enabled = true;
+//            //            if (headAddressInputEditref_.StrAddress== address.text.ToString().ToLower())
+//            //            {
+//            //                ErrorImage2.enabled = false;
+//            //                RightImage2.enabled = true;
+//            //                flagEnd = true;                 //标记，将被赋值之后的空间置为红色
+//            //                flagmove = false;
+//            //                flagID = false;
+//            //                flagName = false;
+//            //                flagadress = false;
+//            ////                nextBt.enabled = true;
+//            //				postbutton.gameObject.SetActive(true);
+//            //                preBt.enabled = true;
+//            //                InputAdress2.enabled = false;
+//            //            }
+//            //            else if (headAddressInputEditref_.StrAddress.Length > 0)
+//            //            {
+//            //                ErrorImage2.enabled = true;
+//            //                RightImage2.enabled = false;
+//            //                InputAdress2.enabled = true;
+//            //            }
+//        }
+//        if (Clickcount >= 6)
+//        {
+//            //报错
+//            startBt.enabled = false;
+//        }
 
 
        
-        if (preBt.enabled == true)
-        {
-            preImageAble.gameObject.SetActive(true);
-            preImageDisable.gameObject.SetActive(false);
-        }
-        else
-        {
-            preImageAble.gameObject.SetActive(false);
-            preImageDisable.gameObject.SetActive(true);
-        }
-//        if (nextBt.enabled == true)
+//        if (preBt.enabled == true)
 //        {
-//            nextImageAble.gameObject.SetActive(true);
-//            nextImageDisable.gameObject.SetActive(false);
+//            preImageAble.gameObject.SetActive(true);
+//            preImageDisable.gameObject.SetActive(false);
 //        }
 //        else
 //        {
-//            nextImageAble.gameObject.SetActive(false);
-//            nextImageDisable.gameObject.SetActive(true);
+//            preImageAble.gameObject.SetActive(false);
+//            preImageDisable.gameObject.SetActive(true);
 //        }
-    }
+////        if (nextBt.enabled == true)
+////        {
+////            nextImageAble.gameObject.SetActive(true);
+////            nextImageDisable.gameObject.SetActive(false);
+////        }
+////        else
+////        {
+////            nextImageAble.gameObject.SetActive(false);
+////            nextImageDisable.gameObject.SetActive(true);
+////        }
+//    }
 }

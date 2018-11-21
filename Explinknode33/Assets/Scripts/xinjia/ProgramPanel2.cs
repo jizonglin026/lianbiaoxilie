@@ -23,18 +23,20 @@ public class ProgramPanel2 : MonoBehaviour {
 	public Button postButton;
 	private int count;
 
+    public Button startButton;
     
 	// Use this for initialization
 	void Start () {
 		count = 2;
 		inputFieldArray = arrayParent.transform.GetComponentsInChildren<InputField> (true);
 		postButton.interactable = false;
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        startButton.interactable = true;
+    }
 	public void OnPostButton()
 	{
 		string code = AddCode ();
@@ -136,8 +138,8 @@ public class ProgramPanel2 : MonoBehaviour {
 				tipText.text = "请根据注释填写第六行代码";
 				zhushi5.SetActive (true);
 				code5.SetActive (true);
-               
 
+                    startButton.interactable = true;
 			}
                 
                 break;

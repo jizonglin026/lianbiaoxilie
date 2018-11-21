@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DG.Tweening;
 using System;
 /*
 * 在程序开始阶段，指定内存中被占用的内存
@@ -14,6 +15,7 @@ public class memorystart : MonoBehaviour
 	public Image[] StepImage = new Image[3];
 
 	public Text Adress;                         //内存当前地址
+    public Transform contextPos;
 	public Text tip5;                           //提示文本
 
 	public Image ColorImage11;
@@ -86,6 +88,7 @@ public class memorystart : MonoBehaviour
     */
 	void Start()
 	{
+        Adress.gameObject.SetActive(false);
 		int i, j;
 		for (i = 0; i < Ycount; i++)
 		{
@@ -1098,7 +1101,10 @@ public class memorystart : MonoBehaviour
 				showContextAddress();
 				start2ref_.flagmove = false;
 				showmemory();
-			}
+                Adress.rectTransform.anchoredPosition = new Vector2(ImagePreX[0]-30, ImagePreY[0]+30);
+                Adress.gameObject.SetActive(true);
+                
+            }
 			//显示ID
 			if (start2ref_.flagID == true && flagAction == true)
 			{
@@ -1133,6 +1139,7 @@ public class memorystart : MonoBehaviour
 				flagAction = false;
 				zhuanhang1 = false;
 				zhuanhang2 = false;
+                StartCoroutine(MoveUI());
 			}
 		}
 		else if (start3ref_.isActiveAndEnabled == true && flagEnd == false)
@@ -1353,34 +1360,35 @@ public class memorystart : MonoBehaviour
 		}
 	}
 
+    private IEnumerator MoveUI()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        StepImage[start2ref_.counti].transform.DOMove(Adress.transform.position, 2f);
+           
+        yield return new WaitForSeconds(2.5f);
+        StepImage[start2ref_.counti].gameObject.SetActive(false);
+
+    }
+
     private void startprogram02adress()
     {
-        for (i = 0; i < 3; i++)
-        {
-            if (i == start2ref_.counti)
-            {
-                StepImage[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                StepImage[i].gameObject.SetActive(false);
-            }
-        }
-
-        StepImage[start2ref_.counti].rectTransform.anchoredPosition = new Vector2(ImagePreX[start2ref_.counti] - 30, ImagePreY[start2ref_.counti] + 30);
-        showAllIDValue(start2ref_.counti);
+        
         countName = 0;
         //让内存中的值闪一闪
-        i = adcount[start2ref_.counti] / Xcount;
-        j = adcount[start2ref_.counti] % Xcount;
-        if (countID == 0)
+        showAllAddress(start5ref_.counti + 1);
+        countID = 0;
+        //让内存中的值闪一闪
+        i = (adcount[start5ref_.counti] + 12) / Xcount;
+        j = (adcount[start5ref_.counti] + 12) % Xcount;
+        if (countAdress == 0)
         {
-            for (; i <= Ycount && countID < 4; i++)
+            for (; i <= Ycount && countAdress < 4; i++)
             {
-                for (; j < Xcount && countID < 4; j++)
+                for (; j < Xcount && countAdress < 4; j++)
                 {
                     MemoryTextArray[i, j].GetComponent<Animation>().Play();
-                    countID++;
+                    countAdress++;
                 }
                 if (j == Xcount)
                 {
@@ -1428,19 +1436,7 @@ public class memorystart : MonoBehaviour
     }
     private void startprogram02Name()
     {
-        for (i = 0; i < 3; i++)
-        {
-            if (i == start2ref_.counti)
-            {
-                StepImage[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                StepImage[i].gameObject.SetActive(false);
-            }
-        }
 
-        StepImage[start2ref_.counti].rectTransform.anchoredPosition = new Vector2(ImagePreX[start5ref_.counti] - 30, ImagePreY[start5ref_.counti] + 30);
         showAllNameValue(start2ref_.counti);
         countAdress = 0;
         //让内存中的值闪一闪
