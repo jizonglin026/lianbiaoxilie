@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<cross-domain-policy>
+    <allow-access-from domain = "^(https?://)?(vrsygc\.chinacloudapp\.cn){1}(/token\.php)?$" />
+    <allow-access-from domain = "^(https?://)?(veep\.chinacloudapp\.cn){1}(/token\.php)?$" />
+    <allow-access-from domain = "^(https?://)?([a-zA-Z0-9_]*\.)?(vrsygc\.com){1}(/token\.php)?$" />
+	<allow-access-from domain = "[a-zA-Z0-9_]*" />
+	<experiment-id expid = "D4EC52C9C05ED0DD0D195C9B8AC1272E" />
+</cross-domain-policy>
