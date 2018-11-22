@@ -16,6 +16,9 @@ public class memorystart : MonoBehaviour
 
 	public Text Adress;                         //内存当前地址
     public Transform contextPos;
+    public Image flagrowID;
+    public Image flagrowName;
+    public Image flagrowAdress;
 	public Text tip5;                           //提示文本
 
 	public Image ColorImage11;
@@ -88,6 +91,9 @@ public class memorystart : MonoBehaviour
     */
 	void Start()
 	{
+        flagrowID.gameObject.SetActive(false);
+        flagrowName.gameObject.SetActive(false);
+        flagrowAdress.gameObject.SetActive(false);
         Adress.gameObject.SetActive(false);
 		int i, j;
 		for (i = 0; i < Ycount; i++)
@@ -1101,7 +1107,8 @@ public class memorystart : MonoBehaviour
 				showContextAddress();
 				start2ref_.flagmove = false;
 				showmemory();
-                Adress.rectTransform.anchoredPosition = new Vector2(ImagePreX[0]-30, ImagePreY[0]+30);
+               // Adress.transform.position = MemoryTextArray[i, j].transform.position;
+               // Adress.transform.DOMove(contextPos, 2);
                 Adress.gameObject.SetActive(true);
                 
             }
@@ -1381,6 +1388,8 @@ public class memorystart : MonoBehaviour
         //让内存中的值闪一闪
         i = (adcount[start5ref_.counti] + 12) / Xcount;
         j = (adcount[start5ref_.counti] + 12) % Xcount;
+        flagrowAdress.gameObject.SetActive(true);
+        flagrowAdress.transform.DOMove(MemoryTextArray[i,j].transform.position + new Vector3(0, 30, 0), 2);
         if (countAdress == 0)
         {
             for (; i <= Ycount && countAdress < 4; i++)
@@ -1396,6 +1405,15 @@ public class memorystart : MonoBehaviour
                 }
             }
         }
+        StartCoroutine(Killflag());
+    }
+
+    private IEnumerator Killflag()
+    {
+        yield return new WaitForSeconds(1);
+        flagrowID.transform.DOScale(0, 3);
+        flagrowName.transform.DOScale(0, 3);
+        flagrowAdress.transform.DOScale(0, 3);
     }
 
     private void startprogram02ID()
@@ -1418,11 +1436,14 @@ public class memorystart : MonoBehaviour
         //让内存中的值闪一闪
         i = adcount[start2ref_.counti] / Xcount;
         j = adcount[start2ref_.counti] % Xcount;
+        flagrowID.gameObject.SetActive(true);
+        flagrowID.transform.DOMove(MemoryTextArray[i, j].transform.position+new Vector3(0,30,0), 2);
         if (countID == 0)
         {
             for (; i <= Ycount && countID < 4; i++)
             {
                 for (; j < Xcount && countID < 4; j++)
+
                 {
                     MemoryTextArray[i, j].GetComponent<Animation>().Play();
                     countID++;
@@ -1442,6 +1463,10 @@ public class memorystart : MonoBehaviour
         //让内存中的值闪一闪
         i = (adcount[start2ref_.counti] + 4) / Xcount;
         j = (adcount[start2ref_.counti] + 4) % Xcount;
+        flagrowName.gameObject.SetActive(true);
+        Tweener tweener = flagrowName.transform.DOMove(MemoryTextArray[i, j].transform.position+new Vector3(0, 30, 0), 2);
+            
+        
         if (countName == 0)
         {
             for (; i <= Ycount && countName < 6; i++)

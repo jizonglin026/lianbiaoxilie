@@ -78,35 +78,35 @@
  <Reference Include="UnityEditor.TreeEditor">
  <HintPath>B:/unity5.3.5/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.Graphs">
- <HintPath>B:/unity5.3.5/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
- </Reference>
- <Reference Include="DOTween43">
- <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
- </Reference>
- <Reference Include="DOTweenEditor">
- <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
- </Reference>
  <Reference Include="DemiLib">
  <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DemiLib/DemiLib.dll</HintPath>
- </Reference>
- <Reference Include="DOTween50">
- <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
  </Reference>
  <Reference Include="DemiEditor">
  <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DemiLib/Editor/DemiEditor.dll</HintPath>
  </Reference>
- <Reference Include="DOTweenProEditor">
- <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
- </Reference>
  <Reference Include="DOTween">
  <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenEditor">
+ <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
  </Reference>
  <Reference Include="DOTweenPro">
  <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
- <Reference Include="DOTween46">
- <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+ <Reference Include="DOTweenProEditor">
+ <HintPath>B:/unity5.3.5/unityre/EXPlinknode2/Explinknode33/Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>B:/unity5.3.5/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
